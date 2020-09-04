@@ -24,17 +24,16 @@ before_script:
 - npm set progress=false
 - npm install
 
-notifications:
-  email:
-    - yauhong1999@hotmail.com
-    
-notifications:
-  webhooks: https://travis-ci.com/GohYauHong/paperjs.org.svg?branch=master
-    
     
 script:
 - npm run build
 - '[ "${TRAVIS_BRANCH}" = "master" ] && travis/deploy.sh || true'
 
-notifications:
-  webhooks: https://github.com/GohYauHong/paperjs.org/settings/hooks
+
+notifications: # set notification options
+  email:
+    on_success: change
+    on_failure: always
+    recipients:
+      - yauhong1999@hotmail.com
+    
